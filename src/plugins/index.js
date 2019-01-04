@@ -15,7 +15,7 @@ module.exports.register = async server => {
    },{
        plugin: serverStart,
        options: {
-           message: 
+           message: `My hapi server is running at ${ server.info.uri }`
        }
    }]);
 };
