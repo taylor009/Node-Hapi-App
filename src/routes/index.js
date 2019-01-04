@@ -1,3 +1,4 @@
+
 "use strict";
 
 const boom = require( "boom" );
@@ -63,8 +64,13 @@ module.exports.register = async server => {
             handler: ( request, h ) => {
                 try {
                     if ( request.auth.isAuthenticated ) {
+                        // const idToken = encodeURI( request.auth.credentials.token );
+
                         // clear the local session
                         request.cookieAuth.clear();
+                        // redirect to the Okta logout to completely clear the session
+                        // const oktaLogout = `${ process.env.OKTA_ORG_URL }/oauth2/default/v1/logout?id_token_hint=${ idToken }&post_logout_redirect_uri=${ process.env.HOST_URL }`;
+                        // return h.redirect( oktaLogout );
                     }
 
                     return h.redirect( "/" );

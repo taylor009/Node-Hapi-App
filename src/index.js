@@ -1,11 +1,11 @@
 "use strict";
 
 // Load in environment configuration
-require("dotenv").config();
+require( "dotenv" ).config();
 const app = require( "./app" );
 
 const DEFAULT_PORT = 8080;
-const port = 8080;
+const port = process.env.PORT || DEFAULT_PORT;
 const config = { port };
 
 const start = async () => {
@@ -15,10 +15,9 @@ const start = async () => {
 
         // start the server
         await server.start();
-        console.log( `Server running at  http://localhost:${ port }` );
     } catch ( err ) {
-        console.log( err );
-        process.exit( 1 );
+        console.log( err ); // eslint-disable-line
+        process.exit( 1 ); // eslint-disable-line
     }
 };
 
