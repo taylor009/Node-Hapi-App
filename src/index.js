@@ -1,7 +1,10 @@
 "use strict";
 
+// Load in environment configuration
+require("dotenv").config();
 const app = require( "./app" );
 
+const DEFAULT_PORT = 8080;
 const port = 8080;
 const config = { port };
 
@@ -12,7 +15,6 @@ const start = async () => {
 
         // start the server
         await server.start();
-
         console.log( `Server running at  http://localhost:${ port }` );
     } catch ( err ) {
         console.log( err );
